@@ -461,7 +461,7 @@ public class PaodingMaker {
 					} finally {
 						if (obtained) {
 							try {
-								lock.close(); //lock.release() 此方法被刪除了
+								lock.release(); // 如果不行就用 lock.close()
 							} catch (Exception ex) {
 
 							}
