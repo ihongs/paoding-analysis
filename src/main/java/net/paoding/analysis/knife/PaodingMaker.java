@@ -306,7 +306,9 @@ public class PaodingMaker {
 		// 此时只有当属性文件没有配置paoding.dic.home时才会采用环境变量的配置
 		String dicHomeBySystemEnv = null;
 		try {
-			dicHomeBySystemEnv = getSystemEnv(Constants.ENV_PAODING_DIC_HOME);
+                        // 先从属性里获取, 没有则从环境里获取. Modify by Hongs, 2015/5/12
+			dicHomeBySystemEnv = System.getProperty(Constants.DIC_HOME,
+                                       getSystemEnv(Constants.ENV_PAODING_DIC_HOME));
 		} catch (Error e) {
 			log.warn("System.getenv() is not supported in JDK1.4. ");
 		}
